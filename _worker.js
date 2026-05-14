@@ -3,7 +3,11 @@ export async function onRequest(context) {
   const url = new URL(request.url);
   
   if (url.pathname === '/index.wasm') {
-    return await fetch('https://match3-game-assets.s3.amazonaws.com/index.wasm', request);
+    return await fetch('https://cdn.jsdelivr.net/gh/KimkeLee/shuaimao@master/index.wasm', {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      }
+    });
   }
   
   return await context.next();
